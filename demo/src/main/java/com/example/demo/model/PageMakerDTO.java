@@ -11,13 +11,13 @@ public class PageMakerDTO {
     private int endPage;
     private boolean prev, next;
     private int total;
+    private int prevPageNum;
     private Criteria cri;
 
     public PageMakerDTO(Criteria cri, int total) {
         this.cri = cri;
         this.total = total;
 
-        // 페이징 버튼 5개 단위 계산
         this.endPage = (int)(Math.ceil(cri.getPageNum() / 5.0)) * 5;
         this.startPage = this.endPage - 4;
 
@@ -27,7 +27,13 @@ public class PageMakerDTO {
             this.endPage = realEnd;
         }
 
-        this.prev = this.startPage > 1;
-        this.next = this.endPage < realEnd;
+        if (cri.getPageNum() > 1) {
+            prevPageNum = cri.getPageNum() - 1;
+        } else {
+            prevPageNum = 1;
+        }
+
+        this.prev = this.startPage >= 1;
+        this.next = this.endPage <= realEnd;
     }
 }

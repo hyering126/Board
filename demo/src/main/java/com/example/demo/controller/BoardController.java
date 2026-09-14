@@ -26,7 +26,7 @@ public class BoardController {
         int total = boardService.getTotalCount();
 
         model.addAttribute("boardList", boardService.findBoardListWithCri(cri));
-        model.addAttribute("pageMaker", new PageMakerDTO(cri, total)); // pageMaker 전달
+        model.addAttribute("pageMaker", new PageMakerDTO(cri, total));
 
         return "board/list";
     }

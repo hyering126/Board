@@ -52,6 +52,22 @@ body {
     font-weight: bold;
 }
 
+.pagination {
+    list-style: none;
+    display: flex;
+    width: 50%;
+    justify-content: center;
+}
+
+.pagination .page-item {
+    margin: 10px 10px;
+    padding: 5px 10px;
+    text-decoration: none;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    color: #333;
+}
+
 .board-header{
     display: flex;
     justify-content: space-between;

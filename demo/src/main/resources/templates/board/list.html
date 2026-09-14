@@ -39,7 +39,7 @@
         <ul class="pagination justify-content-center" th:if="${pageMaker != null and pageMaker.endPage > 0}">
 
             <li class="page-item" th:if="${pageMaker.prev}">
-                <a class="page-link" th:href="@{/board/list(pageNum=${pageMaker.startPage - 1}, amount=${pageMaker.cri.amount})}">이전</a>
+                <a class="page-link" th:href="@{/board/list(pageNum=${pageMaker.prevPageNum}, amount=${pageMaker.cri.amount})}">이전</a>
             </li>
 
             <li class="page-item"
@@ -53,10 +53,8 @@
             <li class="page-item" th:if="${pageMaker.next}">
                 <a class="page-link" th:href="@{/board/list(pageNum=${pageMaker.endPage + 1}, amount=${pageMaker.cri.amount})}">다음</a>
             </li>
-
         </ul>
     </div>
-
 </div>
 </body>
 </html>
