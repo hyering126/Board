@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>게시판 목록</title>
+    <link rel="stylesheet" th:href="@{/css/base.css}"/>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
+</head>
+<body>
+<div class="board">
+    <div class="board-header">
+        <h1>게시글 목록</h1>
+        <a href="/board/form" class="btn btn-primary register-btn">등록</a>
+    </div>
+    <br/>
+    <table class="post-list table">
+        <thead>
+        <tr>
+            <th class="col-md-3">등록일시</th>
+            <th class="col-md-6">제목</th>
+            <th class="col-md-3">이름</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:if="${boardList.isEmpty()}">
+            <td colspan="3">등록된 게시글이 없습니다.</td>
+        </tr>
+        <tr th:each="board : ${boardList.content}">
+            <td th:text="${board.createdDate != null ? #temporals.format(board.createdDate, 'yyyy-MM-dd HH:mm') : '-'}"></td>
+            <td>
+                <a th:href="@{/board/{id}(id=${board.id})}" th:text="${board.title}">제목</a>
+            </td>
+            <td th:text="${board.writer}">이름</td>
+        </tr>
+        </tbody>
+    </table>
+
+    <div class="text-center" style="margin-top: 20px;">
+        <ul class="pagination justify-content-center" th:if="${pageMaker != null and pageMaker.endPage > 0}">
+
+            <li class="page-item" th:if="${pageMaker.prev}">
+                <a class="page-link" th:href="@{/board/list(pageNum=${pageMaker.startPage - 1}, amount=${pageMaker.cri.amount})}">이전</a>
+            </li>
+
+            <li class="page-item"
+                th:each="num : ${#numbers.sequence(pageMaker.startPage, pageMaker.endPage)}"
+                th:classappend="${pageMaker.cri.pageNum == num} ? 'active'">
+                <a class="page-link"
+                   th:href="@{/board/list(pageNum=${num}, amount=${pageMaker.cri.amount})}"
+                   th:text="${num}">1</a>
+            </li>
+
+            <li class="page-item" th:if="${pageMaker.next}">
+                <a class="page-link" th:href="@{/board/list(pageNum=${pageMaker.endPage + 1}, amount=${pageMaker.cri.amount})}">다음</a>
+            </li>
+
+        </ul>
+    </div>
+
+</div>
+</body>
+</html>
