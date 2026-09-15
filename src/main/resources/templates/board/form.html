@@ -10,7 +10,8 @@
 <div class="container board">
     <div class="board-header">
         <h1 th:text="${board?.id == null ? '게시글 등록' : '게시글 수정'}"></h1>
-        <a href="/board/list" class="btn btn-default">목록</a>
+        <a href="/board/list" class="btn btn-primary register-btn">목록</a>
+        <!-- <a href="/board/list" class="btn btn-default">목록</a> -->
     </div>
     <br>
     <input id="board_id" type="hidden" th:value="${board?.id}"/>
