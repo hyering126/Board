@@ -55,8 +55,8 @@ body {
 .pagination {
     list-style: none;
     display: flex;
-    width: 50%;
     justify-content: center;
+    margin: 0 auto;
 }
 
 .pagination .page-item {

@@ -13,7 +13,7 @@
         <a href="/board/list" class="btn btn-default">목록</a>
     </div>
     <br>
-    <table class="table">
+    <table class="post-list table">
         <tr>
             <th>등록일시</th>
             <td th:text="${board.createdDate != null ? #temporals.format(board.createdDate, 'yyyy-MM-dd HH:mm') : '-'}"></td>

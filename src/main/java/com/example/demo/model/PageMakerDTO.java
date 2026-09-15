@@ -34,6 +34,6 @@ public class PageMakerDTO {
         }
 
         this.prev = this.startPage >= 1;
-        this.next = this.endPage <= realEnd;
+        this.next = this.cri.getPageNum() < realEnd;
     }
 }
