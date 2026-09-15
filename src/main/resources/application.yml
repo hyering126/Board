@@ -5,7 +5,7 @@ spring:
     cache: false
   jpa:
     hibernate:
-      ddl-auto: create
+      ddl-auto: update
   h2:
     console:
       enabled: true
@@ -14,6 +14,6 @@ spring:
         web-allow-others: true
   datasource:
     driver-class-name: org.h2.Driver
-    url: jdbc:h2:mem:test
+    url: jdbc:h2:file:./data/testdb
     username: sa
     password:
