@@ -27,7 +27,7 @@
         </tr>
         <tr th:if="${board?.id == null}">
             <th>비밀번호</th>
-            <td><input id="board_password" type="password" class="form-control"/></td>
+            <td><input id="board_password" type="password" class="form-control" maxlength="4" placeholder="숫자 4자리"/></td>
         </tr>
         <tr>
             <th>내용</th>
