@@ -7,6 +7,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -24,7 +25,7 @@ public class BoardService {
 
     public Page<Board> findBoardListWithCri(Criteria cri) {
         int page = cri.getPageNum() < 1 ? 0 : cri.getPageNum() - 1;
-        return boardRepository.findAll(PageRequest.of(page, cri.getAmount()));
+        return boardRepository.findAll(PageRequest.of(page, cri.getAmount(), Sort.by("createdDate").descending()));
     }
 
     public int getTotalCount() {
