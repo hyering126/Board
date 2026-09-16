@@ -27,7 +27,7 @@
         </tr>
         <tr th:if="${board?.id == null}">
             <th>비밀번호</th>
-            <td><input id="board_password" type="password" class="form-control" maxlength="4" placeholder="숫자 4자리"/></td>
+            <td><input id="board_password" type="password" class="form-control" minlength="4" maxlength="4" placeholder="숫자 4자리"/></td>
         </tr>
         <tr>
             <th>내용</th>
@@ -52,7 +52,7 @@
                 const password = document.getElementById('board_password').value;
                 const content = document.getElementById('board_content').value;
 
-                if (!title || !writer || !password || !content) {
+                if (!title || !writer || !password || !content || password.length !== 4) {
                     alert('모든 항목을 입력해 주세요.');
                     return;
                 }
