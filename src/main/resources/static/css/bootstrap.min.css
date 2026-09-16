@@ -80,3 +80,7 @@ body {
     border-radius: 5px;
     text-decoration: none;
 }
+
+.active .page-link {
+    color: red;
+}
